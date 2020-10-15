@@ -11,11 +11,6 @@
                         <button @click='openTeamDetails(team.id)' type="button" class="btn btn-secondary btn-sm">Voir</button>
                     </li>
 
-
-                  <!--
-                    <li class="list-group-item">Cras justo odio <button type="button" class="btn btn-secondary btn-sm">Small button</button></li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li> -->
               </ul>
             </div>
           </div>
@@ -43,7 +38,7 @@ export default {
     openTeamDetails(teamId){
          // this.$router.push({ name:'productsDetails', params:{coffeeId} })
         this.$router.push({ name:'teamsDetails', params:{ teamId } })
-        
+
     }
   },
   created(){
