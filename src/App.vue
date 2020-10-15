@@ -1,30 +1,28 @@
 <template>
   <div id="app">
-    <RoverNav />
+    <YnovNav />
     <div class="container">
 
         <div class="row">
-            <RoverSideBar />
-            <RoverMainContainer />
+             <router-view></router-view>
+            <!-- <YnovMainContainer /> -->
         </div>
     </div>
-    <RoverFooter />
+    <YnovFooter />
   </div>
 </template>
 
 <script>
-import RoverNav           from './components/RoverNav.vue'
-import RoverSideBar       from './components/RoverSideBar.vue'
-import RoverMainContainer from './components/RoverMainContainer.vue'
-import RoverFooter        from './components/RoverFooter.vue'
+import YnovNav           from './components/YnovNav.vue'
+
+// import YnovMainContainer from './components/YnovMainContainer.vue'
+import YnovFooter        from './components/YnovFooter.vue'
 
 export default {
   name: 'App',
   components: {
-    RoverNav,
-    RoverSideBar,
-    RoverMainContainer,
-    RoverFooter
+    YnovNav,
+    YnovFooter
   }
 }
 </script>
