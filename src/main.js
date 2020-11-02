@@ -6,8 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App.vue'
 
 
-
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,6 +17,19 @@ const routes = [
         path: '/home', name:'home',
         component: () => import('./components/YnovMainContainer.vue')
     },
+    {
+        path: '/photos', name:'photos',
+        component: () => import('./components/YnovPhotos.vue')
+    },
+    {
+        path: '/admin/photos/', name:'photoEdit',
+        component: () => import('./components/YnovPhotosEdit.vue')
+    },
+    {
+        path: '/admin/photos/:photoId', name:'photoEdit',
+        component: () => import('./components/YnovPhotosEdit.vue')
+    },
+
     {
         path: '/teams', name:'teams',
         component: () => import('./components/YnovTeamsList.vue')

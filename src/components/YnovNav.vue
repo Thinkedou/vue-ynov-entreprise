@@ -11,6 +11,9 @@
                      <router-link class="nav-link" to="/home">Home</router-link>
                 </li>
                 <li class="nav-item">
+                    <router-link class="nav-link" to="/photos">Photos</router-link>
+                </li>
+                <li class="nav-item">
                     <router-link class="nav-link" to="/teams">Team</router-link>
                 </li>
 
