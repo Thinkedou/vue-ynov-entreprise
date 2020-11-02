@@ -13,8 +13,7 @@
               <input v-model='selectedPhoto.thumbnailUrl' type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
             </div>
           </form>
-          <button type="button" class="btn btn-info" @click='updatePhoto'>Update</button>
-          {{selectedPhoto}}
+          <button type="button" class="btn btn-info" @click='handleBtn'>{{this.onEditMode?'Update':'Create'}}</button>
         </div>
 
 
@@ -32,7 +31,8 @@ export default {
   props: {
   },
   data:()=>({
-      selectedPhoto:{}
+      selectedPhoto:{},
+      onEditMode:false,
   }),
 
   methods:{
@@ -43,24 +43,42 @@ export default {
         this.selectedPhoto = onePhoto.data;
 
     },
+    async handleBtn(){
+
+        if(this.onEditMode){
+            // PATCH
+            let tryToPatch = await this.updatePhoto();
+            console.log(tryToPatch);
+        }else{
+            // Create
+        }
+
+
+    },
     async updatePhoto(){
         let body = {
             title:this.selectedPhoto.title,
             thumbnailUrl:this.selectedPhoto.thumbnailUrl,
         }
         let tryToUpdate = await axios.patch(`${PHOTOS_API_ENDPOINT}${this.selectedPhoto.id}`,body)
+        return tryToUpdate;
+        // console.log(tryToUpdate);
+    },
 
-        console.log(tryToUpdate);
+    async createPhoto(){
+
     }
   },
   async created(){
-      console.log(this.$route.params);
-      const { photoId = false } = this.$route.params
 
+      const { photoId = false } = this.$route.params
       if(photoId){
+          this.onEditMode = true;
+          await this.fetchOnePhoto(photoId);
           console.log('EN EDITION');
       }else{
-           console.log('EN CREATION');
+          this.onEditMode = false;
+          console.log('EN CREATION');
       }
 
 
